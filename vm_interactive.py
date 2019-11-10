@@ -60,7 +60,7 @@ if __name__ == "__main__":
 
 	descriptions = extract_descriptions("vsphere.py")
 	vsphere_argnames = list(descriptions.keys())
-	tmp = extract_descriptions("execute_program_in_vm.py")
+	tmp = extract_descriptions("soft_reboot.py")
 	tmp.update({"disable_ssl_verification": "Disable ssl verification (for execute program)"})
 	executeprogramm_argnames = list(tmp.keys()) + ["host", "user", "port", "password"]
 	descriptions.update(tmp)
