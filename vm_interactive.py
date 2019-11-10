@@ -51,6 +51,11 @@ def run_with_args(name, args, argnames):
 		exit(1)
 
 if __name__ == "__main__":
+	email = raw_input("Enter your email")
+
+	with open("vm_interactive_last_user", "wt") as f:
+		f.write(email)
+
 	defaults = {"disable_ssl_verification": "True", "host": "192.168.88.238", "user":"administrator@dev.local", "password": "Dev0psi0t!", "vmname": "New_Test", "template" : "ubuntu18", "datastore-name": "HDD_DS", "no-ssl": "True", "vm-folder": "VMS"}
 
 	descriptions = extract_descriptions("vsphere.py")
