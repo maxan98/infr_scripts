@@ -24,6 +24,7 @@ def setup_args():
     parser.add_argument('-j', '--uuid',
                         required=True,
                         help='UUID of the VirtualMachine you want to reboot.')
+
     my_args = parser.parse_args()
     return cli.prompt_for_password(my_args)
 
