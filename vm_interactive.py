@@ -85,10 +85,10 @@ if __name__ == "__main__":
 	p = subprocess.Popen(cmdd, stdout=subprocess.PIPE)
 	with open("last-vm-info.txt","wt") as f:
 		for line in p.stdout:
-			f.write(line)
+            f.write(line.decode("utf-8"))
 	run_with_args("vsphere.py", args, vsphere_argnames)
 	run_with_args("poweronvm.py", args, poweronvm_argnames)
-
+    
 	cmd = "python getallvms.py -s 192.168.88.238 -u administrator@dev.local -p Dev0psi0t! -S -f".split()
 	cmd.append(args["vmname"])
 	p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
