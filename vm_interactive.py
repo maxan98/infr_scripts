@@ -96,10 +96,15 @@ if __name__ == "__main__":
 
 	print "Got vm uuid as", args["vm_uuid"] 
 	try:
-		run_with_args("execute_program_in_vm.py", args, executeprogramm_argnames)
+		run_with_args("soft_reboot.py", args, executeprogramm_argnames)
 	except:
-		print "Waiting for Machine to awake 10s"
+		print "Waiting for Machine to awake 10s First stage reboot. Applying network configuration..."
 		#time.sleep(10)
 		#run_with_args("execute_program_in_vm.py", args, executeprogramm_argnames)
+	try:
+		run_with_args("soft_reboot.py", args, executeprogramm_argnames)
+	except:
+		print "Waiting for Machine to awake 10s. Second stage reboot cleaning up old network leases, etc.."
+
 	exit(0)
 
