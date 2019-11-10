@@ -84,7 +84,8 @@ if __name__ == "__main__":
 	cmdd.append(args["vmname"])
 	p = subprocess.Popen(cmdd, stdout=subprocess.PIPE)
 	with open("last-vm-info.txt","wt") as f:
-		f.write(p.stdout)
+		for line in p.stdout:
+			f.write(line)
 	run_with_args("vsphere.py", args, vsphere_argnames)
 	run_with_args("poweronvm.py", args, poweronvm_argnames)
 
