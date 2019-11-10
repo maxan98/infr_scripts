@@ -81,8 +81,7 @@ if __name__ == "__main__":
 	print args
 	print vsphere_argnames
 	run_with_args("vsphere.py", args, vsphere_argnames)
-
-        run_with_args("poweronvm.py", args, poweronvm_argnames)
+	run_with_args("poweronvm.py", args, poweronvm_argnames)
 
 	cmd = "python getallvms.py -s 192.168.88.238 -u administrator@dev.local -p Dev0psi0t! -S -f".split()
 	cmd.append(args["vmname"])
@@ -91,7 +90,7 @@ if __name__ == "__main__":
 
 	for line in p.stdout:
 		if "Bios" in line:
-			args["vm_uuid"]= line.split(",")[1][2:-3]
+			args["uuid"]= line.split(",")[1][2:-3]
 
 	p.wait()
 
@@ -99,7 +98,7 @@ if __name__ == "__main__":
 		print "getallvms.py returned non-zero value.\nTerminating." 
 		exit(1)
 
-	print "Got vm uuid as", args["vm_uuid"] 
+	print "Got vm uuid as", args["uuid"] 
 	try:
 		run_with_args("soft_reboot.py", args, executeprogramm_argnames)
 	except:
