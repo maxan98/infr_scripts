@@ -16,7 +16,7 @@ def extract_descriptions(filename):
 
 def run_with_args(name, args, argnames):
     cmd = ['python', name]
-        global counter
+    global counter
     for i in argnames:
         if i not in args:
             continue
@@ -80,18 +80,10 @@ if __name__ == "__main__":
             args[i] = inp
     print args
     print vsphere_argnames
-    print args
-    print vsphere_argnames
-    cmdd = "python getallvms.py -s 192.168.88.238 -u administrator@dev.local -p Dev0psi0t! -S -f".split()
-    print args["vmname"]
-    cmdd.append(args["vmname"])
-    p = subprocess.Popen(cmdd, stdout=subprocess.PIPE)
-    with open("last-vm-info.txt","wt") as f:
-            f.write(p.stdout.read())
-    p.wait()
+
     run_with_args("vsphere.py", args, vsphere_argnames)
     run_with_args("poweronvm.py", args, poweronvm_argnames)
-    
+
     cmd = "python getallvms.py -s 192.168.88.238 -u administrator@dev.local -p Dev0psi0t! -S -f".split()
     cmd.append(args["vmname"])
     p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
@@ -118,6 +110,27 @@ if __name__ == "__main__":
         run_with_args("soft_reboot.py", args, executeprogramm_argnames)
     except:
         print "Waiting for Machine to awake 10s. Second stage reboot cleaning up old network leases, etc.."
+    
+    print "Sleeping 30s to get ready for fetching VM conf"
+    time.sleep(35)
+    try:
+        cmdd = "python getallvms.py -s 192.168.88.238 -u administrator@dev.local -p Dev0psi0t! -S -f".split()
+        print args["vmname"]
+        cmdd.append(args["vmname"])
+        p = subprocess.Popen(cmdd, stdout=subprocess.PIPE)
+        with open("last-vm-info.txt","wt") as f:
+                f.write(p.stdout.read())
+        p.wait()
+
+    except Exception as e:
+        print "One more 30s sleep"
+        time.sleep(30)
+        cmdd = "python getallvms.py -s 192.168.88.238 -u administrator@dev.local -p Dev0psi0t! -S -f".split()
+        print args["vmname"]
+        cmdd.append(args["vmname"])
+        p = subprocess.Popen(cmdd, stdout=subprocess.PIPE)
+        with open("last-vm-info.txt","wt") as f:
+                f.write(p.stdout.read())
+        p.wait()
 
     exit(0)
-
