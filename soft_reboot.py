@@ -42,7 +42,7 @@ except IOError as e:
 
 if not si:
     raise SystemExit("Unable to connect to host with supplied info.")
-vm = si.content.searchIndex.FindByUuid(None, args.uuid, True, True)
+vm = si.content.searchIndex.FindByUuid(None, args.uuid, True, False)
 if not vm:
     raise SystemExit("Unable to locate VirtualMachine.")
 
