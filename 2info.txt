@@ -1,0 +1,4 @@
+('Name       : ', 'fddf')
+('Guest      : ', 'Ubuntu Linux (64-bit)')
+('State      : ', 'poweredOn')
+('IP         : ', '192.168.88.226')

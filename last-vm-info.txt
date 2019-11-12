@@ -1,1 +1,10 @@
-test
+('Name       : ', 'fddf')
+('Template   : ', False)
+('Path       : ', '[HDD_DS] fddf/fddf.vmx')
+('Guest      : ', 'Ubuntu Linux (64-bit)')
+('Instance UUID : ', '503765cc-8bb9-8198-1de0-5975b0d693e9')
+('Bios UUID     : ', '42374e99-dc96-3b0c-f1e2-c73fc2699fe3')
+('State      : ', 'poweredOn')
+('VMware-tools: ', 'toolsOk')
+('IP         : ', '192.168.88.226')
+
