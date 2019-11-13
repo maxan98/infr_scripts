@@ -1,4 +1,4 @@
-('Name       : ', 'fddf')
+('Name       : ', 'olegnest3')
 ('Guest      : ', 'Ubuntu Linux (64-bit)')
 ('State      : ', 'poweredOn')
-('IP         : ', '192.168.88.226')
+('IP         : ', '192.168.88.219')

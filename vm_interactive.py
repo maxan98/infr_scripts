@@ -112,7 +112,7 @@ if __name__ == "__main__":
         print "Waiting for Machine to awake 10s. Second stage reboot cleaning up old network leases, etc.."
     
     print "Sleeping 30s to get ready for fetching VM conf"
-    time.sleep(35)
+    time.sleep(125)
     try:
         cmdd = "python getallvms.py -s 192.168.88.238 -u administrator@dev.local -p Dev0psi0t! -S -f".split()
         print args["vmname"]
@@ -123,8 +123,8 @@ if __name__ == "__main__":
         p.wait()
 
     except Exception as e:
-        print "One more 30s sleep"
-        time.sleep(30)
+        print "One more 60s sleep"
+        time.sleep(120)
         cmdd = "python getallvms.py -s 192.168.88.238 -u administrator@dev.local -p Dev0psi0t! -S -f".split()
         print args["vmname"]
         cmdd.append(args["vmname"])
